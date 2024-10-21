@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0b0c10;
+    color: #e0e0e0;
+    font-family: 'Cinzel', serif;
+    cursor: none;
+}
+
+.parallax {
+    height: 100vh;
+    background-image: url('dark-texture.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.5);
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    top: 10%;
+}
+
+.glitch-title {
+    font-size: 4em;
+    color: #e0e0e0;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8), 
+        0 0 20px rgba(255, 0, 95, 0.6), 
+        0 0 30px rgba(255, 0, 95, 0.8);
+    position: relative;
+    text-transform: uppercase;
+    animation: glitch 2s infinite alternate;
+}
+
+.glitch-button {
+    margin: 10px;
+    padding: 10px 30px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5em;
+    border: 2px solid #ff004c;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.glitch-button::before, .glitch-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 95, 0.3);
+    pointer-events: none;
+    clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+    animation: glitchButton 4s infinite alternate;
+}
+
+.glitch-button:hover {
+    background-color: #ff004c;
+    color: #000;
+}
+
+.lyrics p {
+    font-size: 1.5em;
+    line-height: 1.8em;
+    color: #d1d1d1;
+    text-shadow: 0 0 15px rgba(255, 0, 95, 0.7);
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.scroll-fade.active {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+.lyrics p {
+    transform: translateY(50px);
+}
+
+#cursorSigil {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 1000;
+    filter: drop-shadow(0 0 10px #ff004c);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(2px, -2px); }
+    80% { transform: translate(5px, 5px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitchButton {
+    0% { clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%); }
+    50% { clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+}
